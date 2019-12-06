@@ -1,26 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
+import NavBar from './NavBar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+class App extends React.Component {
+  // you actually don't need a constructor 🤯
+  state = {
+    users: [],
+    key: Date.now(),
+    
+  };
+
+  componentDidMount() {
+  
+    axios.get('http://localhost:5000/api/players').then(response => {
+      console.log(response);
+      this.setState({ users: response.data });
+    });
+
+  }
+  
+
+  render() {
+    return (
+      <div className="App container">
+       <NavBar data-testid="nav-bar"/> 
+        <p data-testid="header-text" className="headText">Women's World Cup Players</p>
+
+        
+  
+        
+        <div data-testid="player-grid" className="users">
+          {this.state.users.map(data => (
+            <div className="card">
+            <h3 className="name">{data.name}</h3>
+            <p className="p">{data.country}</p>
+            <p className="p">{data.searches}</p>
+            
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default App

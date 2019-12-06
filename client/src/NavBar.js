@@ -5,7 +5,7 @@ const Navbar = () => {
   const [darkMode, setDarkMode] = useDarkMode(false);
   
   return (
-    <nav className="navbar">
+    <nav className="navbar" data-testid="nav-bar">
       <h1>Women's World Cup Players</h1>
       <div className="dark-mode__toggle">
         <div

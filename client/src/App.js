@@ -27,7 +27,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App container">
-       <NavBar data-testid="nav-bar"/> 
+       <NavBar /> 
         <p data-testid="header-text" className="headText">Women's World Cup Players</p>
 
         

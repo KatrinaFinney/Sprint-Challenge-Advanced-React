@@ -12,7 +12,8 @@
     "nodemon": "^1.17.2"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "react-scripts test"
   },
   "author": "Lambda School",
   "license": "ISC"
